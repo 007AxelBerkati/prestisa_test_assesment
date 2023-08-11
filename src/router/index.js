@@ -16,7 +16,9 @@ const Router = () => {
           component={HomeScreen}
           options={({ navigation }) => ({
             headerRight: () => (
-              <TouchableOpacity onPress={() => navigation.navigate('Create')}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('CreateScreen')}
+              >
                 <Feather name="plus" size={30} />
               </TouchableOpacity>
             ),
@@ -31,7 +33,7 @@ const Router = () => {
             headerRight: () => (
               <TouchableOpacity
                 onPress={() =>
-                  navigation.navigate('Edit', { id: route.params.id })
+                  navigation.navigate('EditScreen', { id: route.params.id })
                 }
               >
                 <EvilIcons name="pencil" size={35} />
