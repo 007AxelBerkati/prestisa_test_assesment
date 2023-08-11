@@ -22,12 +22,23 @@ const HomeScreen = ({ navigation }) => {
     },
   ];
   return (
-    <View>
+    <View
+      style={{
+        paddingHorizontal: 16,
+        flex: 1,
+        backgroundColor: 'white',
+        paddingVertical: 16,
+      }}
+    >
       <FlatList
         data={data}
         keyExtractor={(blogPost) => blogPost.title}
         renderItem={({ item }) => {
-          return <CustomList item={item} navigation={navigation} />;
+          return (
+            <View style={{ marginBottom: 16 }}>
+              <CustomList item={item} navigation={navigation} />
+            </View>
+          );
         }}
       />
     </View>

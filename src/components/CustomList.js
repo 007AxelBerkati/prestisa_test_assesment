@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
 
 const CustomList = ({ item, navigation }) => {
   return (
@@ -13,7 +13,7 @@ const CustomList = ({ item, navigation }) => {
           {item.name} - {item.id} - {item.age}
         </Text>
         <TouchableOpacity onPress={() => {}}>
-          <Feather style={styles.icon} name="trash" />
+          <EvilIcons style={styles.icon} name="trash" />
         </TouchableOpacity>
       </View>
     </TouchableOpacity>
@@ -28,13 +28,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingVertical: 20,
     paddingHorizontal: 10,
-    borderBottomWidth: 1,
+    borderWidth: 1,
+    borderRadius: 10,
     borderColor: 'gray',
   },
   title: {
     fontSize: 18,
   },
   icon: {
-    fontSize: 24,
+    fontSize: 30,
+    color: 'red',
   },
 });

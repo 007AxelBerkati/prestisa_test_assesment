@@ -5,7 +5,7 @@ const ShowScreen = ({ route }) => {
   const { item } = route.params;
 
   return (
-    <View>
+    <View style={{ backgroundColor: 'white', flex: 1, padding: 16 }}>
       <Text>{item.id}</Text>
     </View>
   );
