@@ -1,10 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 
-const ShowScreen = () => {
+const ShowScreen = ({ route }) => {
+  const { item } = route.params;
+
   return (
     <View>
-      <Text>ShowScreen</Text>
+      <Text>{item.id}</Text>
     </View>
   );
 };
