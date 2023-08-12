@@ -14,7 +14,7 @@ export const getData = async (key) => {
     if (value !== null) {
       return JSON.parse(value);
     }
-    return null;
+    return [];
   } catch (e) {
     return null;
   }

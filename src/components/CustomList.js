@@ -3,16 +3,14 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { EvilIcons } from '@expo/vector-icons';
 
-const CustomList = ({ item, navigation }) => {
+const CustomList = ({ item, navigation, onPress }) => {
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate('ShowScreen', { item })}
     >
       <View style={styles.row}>
-        <Text style={styles.title}>
-          {item.name} - {item.id} - {item.age}
-        </Text>
-        <TouchableOpacity onPress={() => {}}>
+        <Text style={styles.title}>{item.title}</Text>
+        <TouchableOpacity onPress={onPress}>
           <EvilIcons style={styles.icon} name="trash" />
         </TouchableOpacity>
       </View>

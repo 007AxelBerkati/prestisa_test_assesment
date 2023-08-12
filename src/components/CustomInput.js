@@ -2,13 +2,13 @@ import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { TextInput } from 'react-native';
 
-const CustomInput = ({ value }) => {
+const CustomInput = ({ value, onChangeText, placeholder }) => {
   return (
     <TextInput
       style={styles.input}
       value={value}
-      onChangeText={() => {}}
-      placeholder="Enter Title"
+      onChangeText={onChangeText}
+      placeholder={placeholder}
     />
   );
 };

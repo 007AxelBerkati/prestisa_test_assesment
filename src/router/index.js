@@ -33,7 +33,9 @@ const Router = () => {
             headerRight: () => (
               <TouchableOpacity
                 onPress={() =>
-                  navigation.navigate('EditScreen', { id: route.params.id })
+                  navigation.navigate('EditScreen', {
+                    item: route.params.item,
+                  })
                 }
               >
                 <EvilIcons name="pencil" size={35} />

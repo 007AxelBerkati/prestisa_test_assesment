@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 
-const CardDescription = () => {
+const CardDescription = ({ title, content }) => {
   return (
     <View style={styles.card}>
-      <Text style={styles.title}>CardDescription</Text>
-      <Text style={styles.content}>CardDescription</Text>
+      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.content}>{content}</Text>
     </View>
   );
 };

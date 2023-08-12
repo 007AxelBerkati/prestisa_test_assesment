@@ -7,7 +7,7 @@ const ShowScreen = ({ route }) => {
 
   return (
     <View style={{ backgroundColor: 'white', flex: 1, padding: 16 }}>
-      <CardDescription />
+      <CardDescription title={item.title} content={item.content} />
     </View>
   );
 };
