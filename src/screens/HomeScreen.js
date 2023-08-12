@@ -1,26 +1,44 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import { Alert, StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 import CustomList from '../components/CustomList';
+import { getData, removeData, storeData } from '../plugins';
 
 const HomeScreen = ({ navigation }) => {
-  const data = [
-    {
-      id: 1,
-      name: 'A',
-      age: 20,
-    },
-    {
-      id: 2,
-      name: 'B',
-      age: 21,
-    },
-    {
-      id: 3,
-      name: 'C',
-      age: 22,
-    },
-  ];
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    getData('data').then((res) => {
+      setData(res);
+    });
+  }, []);
+
+  const onPress = async (item) => {
+    Alert.alert(
+      'Delete',
+      'Do you want to delete just this data or all data?',
+      [
+        {
+          text: 'Delete All Data',
+          style: 'cancel',
+          onPress: async () => {
+            await removeData('data');
+            setData([]);
+          },
+        },
+        {
+          text: 'Delete Just This Data',
+          onPress: async () => {
+            const newData = data.filter((data) => data.id !== item.id);
+            setData(newData);
+            await storeData('data', newData);
+          },
+        },
+      ],
+      { cancelable: false }
+    );
+  };
+
   return (
     <View
       style={{
@@ -33,10 +51,21 @@ const HomeScreen = ({ navigation }) => {
       <FlatList
         data={data}
         keyExtractor={(blogPost) => blogPost.title}
+        ListEmptyComponent={() => (
+          <View style={{ alignItems: 'center', marginTop: 16 }}>
+            <Text style={{ fontSize: 16 }}>No Data</Text>
+          </View>
+        )}
         renderItem={({ item }) => {
           return (
-            <View style={{ marginBottom: 16 }}>
-              <CustomList item={item} navigation={navigation} />
+            <View key={item.id} style={{ marginBottom: 16 }}>
+              <CustomList
+                item={item}
+                navigation={navigation}
+                onPress={() => {
+                  onPress(item);
+                }}
+              />
             </View>
           );
         }}
